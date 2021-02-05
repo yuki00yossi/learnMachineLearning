@@ -7,14 +7,15 @@ y = [i * 2 + rd.uniform(-5, 5) for i in x]
 fig = plt.figure(figsize=(9, 7))
 plt.subplots_adjust(wspace=0.4, hspace=0.6)
 ax1 = fig.add_subplot(221)
-ax2 = fig.add_subplot(223)
+ax2 = fig.add_subplot(222)
+ax3 = fig.add_subplot(223)
 
 plt.subplot(2,2,1)
 plt.title('Data Scatter')
 plt.xlabel('x')
 plt.ylabel('y')
 ax1.scatter(x, y)
-plt.subplot(2,2,3)
+plt.subplot(2,2,2)
 plt.title('Cost Function & Defferences')
 plt.ylabel('defferences')
 plt.xlabel('Variable')
@@ -63,6 +64,15 @@ def learn():
 a = learn()
 ax2.plot(a['n'], a['defference'], color=(0,0,1))
 text = "X = {}".format(a["num"])
-ax2.text(5, 10, text , size=10,
+ax2.text(6, 13, text , size=10,
         horizontalalignment="center", verticalalignment="center")
+
+plt.subplot(2,2,3)
+plt.title('Result')
+plt.xlabel('x')
+plt.ylabel('y')
+ax3.scatter(x, y)
+resultx = [i for i in range(30)]
+resulty = [i * a["num"] for i in resultx ]
+ax3.plot(resultx, resulty)
 plt.show()
